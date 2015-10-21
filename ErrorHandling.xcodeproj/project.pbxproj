@@ -10,6 +10,9 @@
 		500183871BD7B5600010C228 /* ErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 500183861BD7B5600010C228 /* ErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5001838E1BD7B5600010C228 /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500183831BD7B5600010C228 /* ErrorHandling.framework */; settings = {ASSET_TAGS = (); }; };
 		500183931BD7B5600010C228 /* ErrorHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500183921BD7B5600010C228 /* ErrorHandlingTests.swift */; };
+		5001839F1BD7B56A0010C228 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001839D1BD7B56A0010C228 /* ErrorAlert.swift */; settings = {ASSET_TAGS = (); }; };
+		500183A01BD7B56A0010C228 /* TextEmailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001839E1BD7B56A0010C228 /* TextEmailer.swift */; settings = {ASSET_TAGS = (); }; };
+		500183A21BD7B5880010C228 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500183A11BD7B5880010C228 /* Optional.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		5001838D1BD7B5600010C228 /* ErrorHandlingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ErrorHandlingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		500183921BD7B5600010C228 /* ErrorHandlingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingTests.swift; sourceTree = "<group>"; };
 		500183941BD7B5600010C228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5001839D1BD7B56A0010C228 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		5001839E1BD7B56A0010C228 /* TextEmailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEmailer.swift; sourceTree = "<group>"; };
+		500183A11BD7B5880010C228 /* Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				500183861BD7B5600010C228 /* ErrorHandling.h */,
+				5001839D1BD7B56A0010C228 /* ErrorAlert.swift */,
+				5001839E1BD7B56A0010C228 /* TextEmailer.swift */,
+				500183A11BD7B5880010C228 /* Optional.swift */,
 				500183881BD7B5600010C228 /* Info.plist */,
 			);
 			path = ErrorHandling;
@@ -142,6 +151,7 @@
 		5001837A1BD7B5600010C228 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Christian Tietze";
 				TargetAttributes = {
@@ -193,6 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				500183A01BD7B56A0010C228 /* TextEmailer.swift in Sources */,
+				5001839F1BD7B56A0010C228 /* ErrorAlert.swift in Sources */,
+				500183A21BD7B5880010C228 /* Optional.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +315,7 @@
 		500183981BD7B5600010C228 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -314,12 +328,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.ErrorHandling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		500183991BD7B5600010C228 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

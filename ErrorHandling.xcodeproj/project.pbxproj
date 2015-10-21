@@ -157,6 +157,7 @@
 				TargetAttributes = {
 					500183821BD7B5600010C228 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = FRMDA3XRGC;
 					};
 					5001838C1BD7B5600010C228 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -316,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -325,6 +327,7 @@
 				INFOPLIST_FILE = ErrorHandling/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.ErrorHandling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -336,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -345,6 +349,7 @@
 				INFOPLIST_FILE = ErrorHandling/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.ErrorHandling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -392,6 +397,7 @@
 				500183991BD7B5600010C228 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5001839A1BD7B5600010C228 /* Build configuration list for PBXNativeTarget "ErrorHandlingTests" */ = {
 			isa = XCConfigurationList;
@@ -400,6 +406,7 @@
 				5001839C1BD7B5600010C228 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

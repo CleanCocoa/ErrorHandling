@@ -1,10 +1,6 @@
+// Copyright (c) 2015 Christian Tietze
 //
-//  ErrorHandling.h
-//  ErrorHandling
-//
-//  Created by Christian Tietze on 21/10/15.
-//  Copyright © 2015 Christian Tietze. All rights reserved.
-//
+// See the file LICENSE for copying permission.
 
 #import <Cocoa/Cocoa.h>
 

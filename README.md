@@ -26,14 +26,7 @@ do {
 }
 ```
 
-## Usage
-
-![Default Error Dialog](screenshot.png)
-
-The framework includes:
-
-* `ErrorAlert` to display alerts with an error message, informing the user about what happened.
-* `TextEmailer` is the default handler of errors. It simply uses the `mailto:` protocol to send a mail with the system's default e-mail program. You can drop in anything you'd like as replacement which conforms to the `ReportEmailer` protocol.
+## Set-up
 
 Set up the reporter at the beginning of your app. You can do this during [bootstrapping](http://christiantietze.de/posts/2015/10/bootstrapping-appdelegate/) or simply call this in AppDelegate:
 
@@ -44,6 +37,20 @@ func bootstrapErrorReporting() {
     ErrorAlert.emailer = TextEmailer()
 }
 ```
+
+![Info.plist setup](info-plist.png)
+
+The default `TextEmailer` expects your e-mail address in your app's `Info.plist` under the key "**SupportEmail**". Simply add this key with a string value to make it work.
+
+
+## Usage
+
+![Default Error Dialog](screenshot.png)
+
+The framework includes:
+
+* `ErrorAlert` to display alerts with an error message, informing the user about what happened.
+* `TextEmailer` is the default handler of errors. It simply uses the `mailto:` protocol to send a mail with the system's default e-mail program. You can drop in anything you'd like as replacement which conforms to the `ReportEmailer` protocol.
 
 All you have to do is call:
 

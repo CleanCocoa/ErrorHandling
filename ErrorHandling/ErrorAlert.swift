@@ -45,13 +45,34 @@ public class ErrorAlert {
         let reportButton = alert.addButtonWithTitle("Report Problem")
         alert.addButtonWithTitle("I don't want to help, just go on!")
         
-        let errorDetailsField = NSTextField(frame: NSRect(x: 0, y: 0, width: 400, height: 100))
-        errorDetailsField.stringValue = "Reported error: \(error.localizedDescription)\n\n\(error.debugDescription)"
-        errorDetailsField.editable = false
-        alert.accessoryView = errorDetailsField
-        
+        alert.accessoryView = scrollableErrorView()
         alert.window.initialFirstResponder = reportButton
         
         return alert
+    }
+    
+    private func scrollableErrorView() -> NSScrollView {
+        
+        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 400, height: 70))
+        let contentSize = scrollView.contentSize
+        scrollView.hasVerticalScroller = true
+        scrollView.borderType = NSBorderType.BezelBorder
+        scrollView.autoresizingMask = [ .ViewWidthSizable, .ViewHeightSizable ]
+        scrollView.documentView = errorTextView(contentSize)
+        
+        return scrollView
+    }
+    
+    private func errorTextView(contentSize: NSSize) -> NSTextView {
+        
+        let textView = NSTextView(frame: NSRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height))
+        textView.verticallyResizable = true
+        textView.editable = false
+        textView.textContainer?.containerSize = NSSize(width: contentSize.width, height: CGFloat.max)
+        textView.textContainer?.widthTracksTextView = true
+        
+        textView.string = "Reported error: \(error.localizedDescription)\n\n\(error.debugDescription)"
+        
+        return textView
     }
 }

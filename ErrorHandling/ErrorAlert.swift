@@ -38,7 +38,7 @@ public class ErrorAlert {
             return
         }
         
-        ErrorAlert.emailer?.email(error)
+        ErrorAlert.emailer?.email(error: error)
     }
     
     private func alert() -> NSAlert {
@@ -46,8 +46,8 @@ public class ErrorAlert {
         let alert = NSAlert()
         alert.messageText = "An unexpected error occured and the operation couldn't be completed."
         
-        let reportButton = alert.addButtonWithTitle("Report Problem")
-        alert.addButtonWithTitle("I don't want to help, just go on!")
+        let reportButton = alert.addButton(withTitle: "Report Problem")
+        alert.addButton(withTitle: "I don't want to help, just go on!")
         
         alert.accessoryView = scrollableErrorView()
         alert.window.initialFirstResponder = reportButton
@@ -60,9 +60,9 @@ public class ErrorAlert {
         let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 400, height: 70))
         let contentSize = scrollView.contentSize
         scrollView.hasVerticalScroller = true
-        scrollView.borderType = NSBorderType.BezelBorder
-        scrollView.autoresizingMask = [ .ViewWidthSizable, .ViewHeightSizable ]
-        scrollView.documentView = errorTextView(contentSize)
+        scrollView.borderType = NSBorderType.bezelBorder
+        scrollView.autoresizingMask = [ .viewWidthSizable, .viewHeightSizable ]
+        scrollView.documentView = errorTextView(contentSize: contentSize)
         
         return scrollView
     }
@@ -70,9 +70,9 @@ public class ErrorAlert {
     private func errorTextView(contentSize: NSSize) -> NSTextView {
         
         let textView = NSTextView(frame: NSRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height))
-        textView.verticallyResizable = true
-        textView.editable = false
-        textView.textContainer?.containerSize = NSSize(width: contentSize.width, height: CGFloat.max)
+        textView.isVerticallyResizable = true
+        textView.isEditable = false
+        textView.textContainer?.containerSize = NSSize(width: contentSize.width, height: CGFloat.greatestFiniteMagnitude)
         textView.textContainer?.widthTracksTextView = true
         
         textView.string = "Reported error: \(error.localizedDescription)\n\n\(error.debugDescription)"

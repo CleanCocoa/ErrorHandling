@@ -7,8 +7,8 @@ import AppKit
 
 public class TextEmailer {
     
-    static var appInfo: [String : AnyObject]? {
-        return NSBundle.mainBundle().infoDictionary
+    static var appInfo: [String : Any]? {
+        return Bundle.main.infoDictionary
     }
     
     static var appName: String? {
@@ -37,17 +37,17 @@ extension TextEmailer: ReportEmailer {
     
     public func email(error: NSError) {
         
-        email(error.debugDescription)
+        email(text: error.debugDescription)
     }
     
     public func email(text: String) {
         
         let recipient = TextEmailer.supportEmail!
         let subject = "Report for \(TextEmailer.appName!)"
-        let query = "subject=\(subject)&body=\(text)".stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let query = "subject=\(subject)&body=\(text)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         let mailtoAddress = "mailto:\(recipient)?\(query)"
-        let URL = NSURL(string: mailtoAddress)!
+        let url = URL(string: mailtoAddress)!
         
-        NSWorkspace.sharedWorkspace().openURL(URL)
+        NSWorkspace.shared().open(url)
     }
 }

@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		500183871BD7B5600010C228 /* ErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = 500183861BD7B5600010C228 /* ErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5001838E1BD7B5600010C228 /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500183831BD7B5600010C228 /* ErrorHandling.framework */; settings = {ASSET_TAGS = (); }; };
-		500183931BD7B5600010C228 /* ErrorHandlingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500183921BD7B5600010C228 /* ErrorHandlingTests.swift */; };
-		5001839F1BD7B56A0010C228 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001839D1BD7B56A0010C228 /* ErrorAlert.swift */; settings = {ASSET_TAGS = (); }; };
-		500183A01BD7B56A0010C228 /* TextEmailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001839E1BD7B56A0010C228 /* TextEmailer.swift */; settings = {ASSET_TAGS = (); }; };
-		500183A21BD7B5880010C228 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500183A11BD7B5880010C228 /* Optional.swift */; settings = {ASSET_TAGS = (); }; };
+		5001838E1BD7B5600010C228 /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500183831BD7B5600010C228 /* ErrorHandling.framework */; };
+		5001839F1BD7B56A0010C228 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001839D1BD7B56A0010C228 /* ErrorAlert.swift */; };
+		500183A01BD7B56A0010C228 /* TextEmailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5001839E1BD7B56A0010C228 /* TextEmailer.swift */; };
+		500183A21BD7B5880010C228 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500183A11BD7B5880010C228 /* Optional.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +29,6 @@
 		500183861BD7B5600010C228 /* ErrorHandling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorHandling.h; sourceTree = "<group>"; };
 		500183881BD7B5600010C228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5001838D1BD7B5600010C228 /* ErrorHandlingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ErrorHandlingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		500183921BD7B5600010C228 /* ErrorHandlingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingTests.swift; sourceTree = "<group>"; };
 		500183941BD7B5600010C228 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5001839D1BD7B56A0010C228 /* ErrorAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		5001839E1BD7B56A0010C228 /* TextEmailer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEmailer.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 		500183911BD7B5600010C228 /* ErrorHandlingTests */ = {
 			isa = PBXGroup;
 			children = (
-				500183921BD7B5600010C228 /* ErrorHandlingTests.swift */,
 				500183941BD7B5600010C228 /* Info.plist */,
 			);
 			path = ErrorHandlingTests;
@@ -152,15 +149,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Christian Tietze";
 				TargetAttributes = {
 					500183821BD7B5600010C228 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = FRMDA3XRGC;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					5001838C1BD7B5600010C228 = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -214,7 +213,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				500183931BD7B5600010C228 /* ErrorHandlingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,8 +240,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -265,7 +265,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -288,8 +288,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -305,9 +307,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -317,9 +320,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -332,6 +336,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -339,9 +344,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -353,6 +359,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.ErrorHandling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -364,6 +371,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.ErrorHandlingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -375,6 +383,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.ErrorHandlingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

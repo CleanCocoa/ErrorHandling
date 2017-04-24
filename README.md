@@ -61,6 +61,42 @@ ErrorAlert(error: error).displayModal()
     
 And you're set.
 
+### Reporting (and e-mailing) additional info
+
+The `Report` type allows you to wrap any `Error` with a custom string that should be sent along with the report email.
+
+```swift
+let error: Error = ...
+let logs = previousLogMessages.joined(separator: "\n")
+let report = Report(error: error, additionalInfo: logs)
+ErrorAlert(report: report).displayModal()
+```
+
+#### Example: Logging to an array with SwiftyBeaver
+
+If you happen to use [SwiftyBeaver](https://github.com/SwiftyBeaver/SwiftyBeaver) for logging, here's a `InMemoryDestination` that keeps track of the past log messages so you can send them along in your report:
+
+```swift
+import SwiftyBeaver
+
+class InMemoryDestination: BaseDestination {
+
+    var maxHistory = 5
+    fileprivate(set) var messages: [String] = []
+
+    override func send(_ level: SwiftyBeaver.Level, msg: String, thread: String, file: String, function: String, line: Int) -> String? {
+
+        let formattedString = super.send(level, msg: msg, thread: thread, file: file, function: function, line: line) ?? "\(msg) (formatting error!)"
+
+        messages = Array(messages
+            .appending(formattedString)
+            .suffix(maxHistory))
+
+        return formattedString
+    }
+}
+```
+
 
 ## Convenience methods
 
@@ -158,4 +194,6 @@ extension ErrorHandler {
 
 ## License
 
-See LICENSE file.
+Copyright (c) 2015 Christian Tietze. Distributed under the MIT License.
+
+See LICENSE file for details.

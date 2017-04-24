@@ -35,11 +35,16 @@ public class TextEmailer {
 
 extension TextEmailer: ReportEmailer {
     
-    public func email(error: NSError) {
-        
-        email(text: error.debugDescription)
+    public func email(error: Error) {
+
+        email(text: (error as NSError).debugDescription)
     }
-    
+
+    public func email(report: Report) {
+
+        email(text: report.localizedDescription)
+    }
+
     public func email(text: String) {
         
         let recipient = TextEmailer.supportEmail!

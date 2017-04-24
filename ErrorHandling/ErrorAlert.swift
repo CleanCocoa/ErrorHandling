@@ -10,20 +10,63 @@ let IsRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFil
 public protocol ReportEmailer {
     
     func email(text: String)
-    func email(error: NSError)
+    func email(error: Error)
+    func email(report: Report)
+}
+
+enum Reportable: CustomDebugStringConvertible {
+
+    case error(Error)
+    case report(Report)
+
+    var localizedDescription: String {
+        switch self {
+        case .error(let error):
+            return error.localizedDescription
+        case .report(let report):
+            return report.localizedDescription
+        }
+    }
+
+    var debugDescription: String {
+        switch self {
+        case .error(let error as NSError):
+            return error.debugDescription
+        case .error(_):
+            return "()"
+        case .report(_):
+            return "()"
+        }
+    }
+
+    func email(emailer: ReportEmailer) {
+        switch self {
+        case .error(let error):
+            emailer.email(error: error)
+        case .report(let report):
+            emailer.email(report: report)
+        }
+    }
 }
 
 public class ErrorAlert {
     
     public static var emailer: ReportEmailer?
     
-    let error: NSError
-    
+    let reportable: Reportable
+
+    public init(report: Report) {
+
+        precondition(hasValue(ErrorAlert.emailer), "Set ErrorAlert.emailer first.")
+
+        self.reportable = .report(report)
+    }
+
     public init(error: NSError) {
         
         precondition(hasValue(ErrorAlert.emailer), "Set ErrorAlert.emailer first.")
-        
-        self.error = error
+
+        self.reportable = .error(error)
     }
     
     public func displayModal() {
@@ -37,8 +80,11 @@ public class ErrorAlert {
         guard response == NSAlertFirstButtonReturn else {
             return
         }
-        
-        ErrorAlert.emailer?.email(error: error)
+
+        guard let emailer = ErrorAlert.emailer
+            else { return }
+
+        reportable.email(emailer: emailer)
     }
     
     private func alert() -> NSAlert {
@@ -75,7 +121,7 @@ public class ErrorAlert {
         textView.textContainer?.containerSize = NSSize(width: contentSize.width, height: CGFloat.greatestFiniteMagnitude)
         textView.textContainer?.widthTracksTextView = true
         
-        textView.string = "Reported error: \(error.localizedDescription)\n\n\(error.debugDescription)"
+        textView.string = "Reported error: \(reportable.localizedDescription)\n\n\(reportable.debugDescription)"
         
         return textView
     }

@@ -5,7 +5,7 @@
 import Foundation
 import AppKit
 
-let IsRunningTests = NSClassFromString("XCTestCase") != nil
+let IsRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
 
 public protocol ReportEmailer {
     

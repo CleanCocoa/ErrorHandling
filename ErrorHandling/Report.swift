@@ -5,7 +5,7 @@
 public struct Report {
 
     public let error: Error
-    public let additionalInfo: String?
+    public var additionalInfo: String?
 
     public var localizedDescription: String {
 

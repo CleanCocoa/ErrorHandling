@@ -93,7 +93,9 @@ public class ErrorAlert {
         alert.messageText = "An unexpected error occured and the operation couldn't be completed."
         
         let reportButton = alert.addButton(withTitle: "Report Problem")
-        alert.addButton(withTitle: "I don't want to help, just go on!")
+        let cancelButton = alert.addButton(withTitle: "I don't want to help, just go on!")
+        cancelButton.keyEquivalent = "."
+        cancelButton.keyEquivalentModifierMask = [.command]
         
         alert.accessoryView = scrollableErrorView()
         alert.window.initialFirstResponder = reportButton

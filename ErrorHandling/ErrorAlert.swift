@@ -103,11 +103,13 @@ public class ErrorAlert {
     
     private func scrollableErrorView() -> NSScrollView {
         
-        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 400, height: 70))
-        let contentSize = scrollView.contentSize
+        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 400, height: 150))
         scrollView.hasVerticalScroller = true
+        scrollView.autohidesScrollers = true
         scrollView.borderType = NSBorderType.bezelBorder
         scrollView.autoresizingMask = [ .viewWidthSizable, .viewHeightSizable ]
+
+        let contentSize = scrollView.contentSize
         scrollView.documentView = errorTextView(contentSize: contentSize)
         
         return scrollView
@@ -117,10 +119,10 @@ public class ErrorAlert {
         
         let textView = NSTextView(frame: NSRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height))
         textView.isVerticallyResizable = true
-        textView.isEditable = false
+        textView.isEditable = true
         textView.textContainer?.containerSize = NSSize(width: contentSize.width, height: CGFloat.greatestFiniteMagnitude)
         textView.textContainer?.widthTracksTextView = true
-        
+
         textView.string = "Reported error: \(reportable.localizedDescription)\n\n\(reportable.debugDescription)"
         
         return textView

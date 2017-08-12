@@ -91,7 +91,8 @@ public class ErrorAlert {
         
         let alert = NSAlert()
         alert.messageText = "An unexpected error occured and the operation couldn't be completed."
-        
+        alert.informativeText = "The report will not be sent directly. Reporting the error will compose an email draft. You can also edit the text below."
+
         let reportButton = alert.addButton(withTitle: "Report Problem")
         let cancelButton = alert.addButton(withTitle: "I don't want to help, just go on!")
         cancelButton.keyEquivalent = "."

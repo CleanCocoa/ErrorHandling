@@ -53,6 +53,6 @@ extension TextEmailer: ReportEmailer {
         let mailtoAddress = "mailto:\(recipient)?\(query)"
         let url = URL(string: mailtoAddress)!
         
-        NSWorkspace.shared().open(url)
+        NSWorkspace.shared.open(url)
     }
 }

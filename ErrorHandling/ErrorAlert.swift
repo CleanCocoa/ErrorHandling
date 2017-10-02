@@ -32,8 +32,6 @@ enum Reportable: CustomDebugStringConvertible {
         switch self {
         case .error(let error as NSError):
             return error.debugDescription
-        case .error(_):
-            return "()"
         case .report(_):
             return "()"
         }
@@ -77,7 +75,7 @@ public class ErrorAlert {
         
         let response = alert().runModal()
         
-        guard response == NSAlertFirstButtonReturn else {
+        guard response == .alertFirstButtonReturn else {
             return
         }
 
@@ -110,7 +108,7 @@ public class ErrorAlert {
         scrollView.hasVerticalScroller = true
         scrollView.autohidesScrollers = true
         scrollView.borderType = NSBorderType.bezelBorder
-        scrollView.autoresizingMask = [ .viewWidthSizable, .viewHeightSizable ]
+        scrollView.autoresizingMask = [ .width, .height ]
 
         let contentSize = scrollView.contentSize
         scrollView.documentView = errorTextView(contentSize: contentSize)

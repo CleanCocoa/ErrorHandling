@@ -18,6 +18,28 @@ public class TextEmailer {
     static var supportEmail: String? {
         return appInfo?["SupportEmail"] as? String
     }
+
+    static var build: String {
+        guard let build = appInfo?["CFBundleVersion"] as? String else { return "" }
+        return "b\(build)"
+    }
+
+    static var version: String {
+        guard let version = appInfo?["CFBundleShortVersionString"] as? String else { return "" }
+        return "v\(version)"
+    }
+
+    static var versionString: String? {
+        let combined = [version, build].filter { !$0.isEmpty }.joined(separator: " ")
+        guard !combined.isEmpty else { return nil }
+        return "(\(combined))"
+    }
+
+    static var emailSubject: String {
+        let base = "Report for \(appName!)"
+        guard let buildAndVersion = versionString else { return base }
+        return "\(base)  \(buildAndVersion)"
+    }
     
     static func guardInfoPresent() {
         
@@ -53,14 +75,14 @@ extension TextEmailer: ReportEmailer {
         }
 
         emailService.recipients = [TextEmailer.supportEmail!]
-        emailService.subject = "Report for \(TextEmailer.appName!)"
+        emailService.subject = TextEmailer.emailSubject
         emailService.perform(withItems: [text])
     }
 
     private func legacyURLEmailer(text: String) {
 
         let recipient = TextEmailer.supportEmail!
-        let subject = "Report for \(TextEmailer.appName!)"
+        let subject = TextEmailer.emailSubject
         let query = "subject=\(subject)&body=\(text)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let mailtoAddress = "mailto:\(recipient)?\(query)"
         let url = URL(string: mailtoAddress)!

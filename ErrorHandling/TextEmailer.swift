@@ -46,13 +46,25 @@ extension TextEmailer: ReportEmailer {
     }
 
     public func email(text: String) {
-        
+
+        guard let emailService = NSSharingService(named: .composeEmail) else {
+            legacyURLEmailer(text: text)
+            return
+        }
+
+        emailService.recipients = [TextEmailer.supportEmail!]
+        emailService.subject = "Report for \(TextEmailer.appName!)"
+        emailService.perform(withItems: [text])
+    }
+
+    private func legacyURLEmailer(text: String) {
+
         let recipient = TextEmailer.supportEmail!
         let subject = "Report for \(TextEmailer.appName!)"
-        let query = "subject=\(subject)&body=\(text)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let query = "subject=\(subject)&body=\(text)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let mailtoAddress = "mailto:\(recipient)?\(query)"
         let url = URL(string: mailtoAddress)!
-        
+
         NSWorkspace.shared.open(url)
     }
 }

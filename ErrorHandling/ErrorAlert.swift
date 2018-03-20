@@ -9,9 +9,9 @@ let IsRunningTests = ProcessInfo.processInfo.environment["XCTestConfigurationFil
 
 public protocol ReportEmailer {
     
-    func email(text: String)
-    func email(error: Error)
-    func email(report: Report)
+    func email(text: String, instructions: String?)
+    func email(error: Error, instructions: String?)
+    func email(report: Report, instructions: String?)
 }
 
 enum Reportable: CustomDebugStringConvertible {
@@ -37,12 +37,12 @@ enum Reportable: CustomDebugStringConvertible {
         }
     }
 
-    func email(emailer: ReportEmailer) {
+    func email(emailer: ReportEmailer, instructions: String?) {
         switch self {
         case .error(let error):
-            emailer.email(error: error)
+            emailer.email(error: error, instructions: instructions)
         case .report(let report):
-            emailer.email(report: report)
+            emailer.email(report: report, instructions: instructions)
         }
     }
 }
@@ -66,8 +66,9 @@ public class ErrorAlert {
 
         self.reportable = .error(error)
     }
-    
-    public func displayModal() {
+
+    /// - parameter instructions: Optional text prepended to the email message used to ask for details. Defaults to `nil`.
+    public func displayModal(instructions: String? = nil) {
         
         guard !IsRunningTests else {
             fatalError("ErrorAlert involuntarily used in tests")
@@ -75,14 +76,10 @@ public class ErrorAlert {
         
         let response = alert().runModal()
         
-        guard response == .alertFirstButtonReturn else {
-            return
-        }
+        guard response == .alertFirstButtonReturn else { return }
+        guard let emailer = ErrorAlert.emailer else { return }
 
-        guard let emailer = ErrorAlert.emailer
-            else { return }
-
-        reportable.email(emailer: emailer)
+        reportable.email(emailer: emailer, instructions: instructions)
     }
     
     private func alert() -> NSAlert {

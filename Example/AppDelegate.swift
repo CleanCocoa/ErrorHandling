@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let report = Report(
             error: error,
             additionalInfo: additionalInfo)
-        ErrorAlert(report: report).displayModal()
+        ErrorAlert(report: report).displayModal(instructions: "Please tell me what you did, what happened, and what you did expect to happen instead. This helps nail down the problem.\n\n# Original Error #\n")
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {

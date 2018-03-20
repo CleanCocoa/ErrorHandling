@@ -57,17 +57,17 @@ public class TextEmailer {
 
 extension TextEmailer: ReportEmailer {
     
-    public func email(error: Error) {
+    public func email(error: Error, instructions: String? = nil) {
 
-        email(text: (error as NSError).debugDescription)
+        email(text: (error as NSError).debugDescription, instructions: instructions)
     }
 
-    public func email(report: Report) {
+    public func email(report: Report, instructions: String? = nil) {
 
-        email(text: report.localizedDescription)
+        email(text: report.localizedDescription, instructions: instructions)
     }
 
-    public func email(text: String) {
+    public func email(text: String, instructions: String?) {
 
         guard let emailService = NSSharingService(named: .composeEmail) else {
             legacyURLEmailer(text: text)
@@ -76,7 +76,7 @@ extension TextEmailer: ReportEmailer {
 
         emailService.recipients = [TextEmailer.supportEmail!]
         emailService.subject = TextEmailer.emailSubject
-        emailService.perform(withItems: [text])
+        emailService.perform(withItems: [instructions, text].flatMap { $0 })
     }
 
     private func legacyURLEmailer(text: String) {

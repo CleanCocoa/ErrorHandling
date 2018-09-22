@@ -76,7 +76,7 @@ extension TextEmailer: ReportEmailer {
 
         emailService.recipients = [TextEmailer.supportEmail!]
         emailService.subject = TextEmailer.emailSubject
-        emailService.perform(withItems: [instructions, text].flatMap { $0 })
+        emailService.perform(withItems: [instructions, text].compactMap { $0 })
     }
 
     private func legacyURLEmailer(text: String) {

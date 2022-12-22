@@ -85,11 +85,23 @@ public class ErrorAlert {
     private func alert() -> NSAlert {
         
         let alert = NSAlert()
-        alert.messageText = "An unexpected error occured and the operation couldn't be completed."
-        alert.informativeText = "The report will not be sent directly. Reporting the error will compose an email draft. You can also edit the text below."
+        alert.messageText = NSLocalizedString(
+            "de.christiantietze.ErrorHandling alert title",
+            value: "An unexpected error occured and the operation couldn't be completed.",
+            comment: "Alert title text")
+        alert.informativeText = NSLocalizedString(
+            "de.christiantietze.ErrorHandling alert text",
+            value: "The report will not be sent directly. Reporting the error will compose an email draft that you can edit. You can also edit in the text field below.",
+            comment: "Description of the reporting procedure")
 
-        let reportButton = alert.addButton(withTitle: "Report Problem")
-        let cancelButton = alert.addButton(withTitle: "I don't want to help, just go on!")
+        let reportButton = alert.addButton(withTitle: NSLocalizedString(
+            "de.christiantietze.ErrorHandling report button title",
+            value: "Report Problem",
+            comment: "Default button to report the error"))
+        let cancelButton = alert.addButton(withTitle: NSLocalizedString(
+            "de.christiantietze.ErrorHandling cancel button title",
+            value: "Ignore and Continue",
+            comment: "Cancel button, indicating that the app can continue"))
         cancelButton.keyEquivalent = "."
         cancelButton.keyEquivalentModifierMask = [.command]
         

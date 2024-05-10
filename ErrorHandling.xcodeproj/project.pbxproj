@@ -17,6 +17,7 @@
 		509BE9181EAE486B0015285A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 509BE9161EAE486B0015285A /* MainMenu.xib */; };
 		509BE91F1EAE4FB20015285A /* ErrorHandling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500183831BD7B5600010C228 /* ErrorHandling.framework */; };
 		509BE9201EAE4FB20015285A /* ErrorHandling.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 500183831BD7B5600010C228 /* ErrorHandling.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50B575D42BEE0677006C9262 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 50B575D32BEE0677006C9262 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,10 @@
 		509BE9141EAE486B0015285A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		509BE9171EAE486B0015285A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		509BE9191EAE486B0015285A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50B575D32BEE0677006C9262 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = file; name = PrivacyInfo.xcprivacy; path = Sources/ErrorReporter/Resources/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
+		50B575D52BEE068D006C9262 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		50B575D62BEE0692006C9262 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		50B575D72BEE0723006C9262 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,8 @@
 		500183791BD7B5600010C228 = {
 			isa = PBXGroup;
 			children = (
+				50B575D52BEE068D006C9262 /* README.md */,
+				50B575D62BEE0692006C9262 /* LICENSE */,
 				500183851BD7B5600010C228 /* ErrorHandling */,
 				509BE9111EAE486B0015285A /* Example */,
 				500183841BD7B5600010C228 /* Products */,
@@ -103,6 +110,7 @@
 				5001839E1BD7B56A0010C228 /* TextEmailer.swift */,
 				509BE90A1EAE47220015285A /* Report.swift */,
 				500183A11BD7B5880010C228 /* Optional.swift */,
+				50B575D32BEE0677006C9262 /* PrivacyInfo.xcprivacy */,
 				500183881BD7B5600010C228 /* Info.plist */,
 			);
 			path = ErrorHandling;
@@ -112,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				509BE9121EAE486B0015285A /* AppDelegate.swift */,
+				50B575D72BEE0723006C9262 /* PrivacyInfo.xcprivacy */,
 				509BE9141EAE486B0015285A /* Assets.xcassets */,
 				509BE9161EAE486B0015285A /* MainMenu.xib */,
 				509BE9191EAE486B0015285A /* Info.plist */,
@@ -218,6 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B575D42BEE0677006C9262 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

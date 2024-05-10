@@ -16,6 +16,6 @@ let package = Package(
     targets: [
         .target(
             name: "ErrorReporter",
-            dependencies: [])
+            resources: [.process("Resources/PrivacyInfo.xcprivacy")])
     ]
 )

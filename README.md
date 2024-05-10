@@ -1,5 +1,5 @@
 # ErrorHandling
-
+b
 Sooner or later, every program crashes or does something weird. Even when the app can recover, it's best to make the user report problems sooner or later.
 
 Instead of deferring this until later ...
@@ -191,6 +191,14 @@ extension ErrorHandler {
     }
 }
 ```
+
+
+## Privacy Manifest
+
+The package does not collect or store any data.
+
+The `TextEmailer` relies on the user's email client to send an email to your support inbox, so it doesn't process the user's email at all.
+ 
 
 ## License
 
